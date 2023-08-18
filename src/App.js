@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React from "react";
+import "bootswatch/dist/darkly/bootstrap.min.css";
+import { MovieDetails} from "./pages/MovieDetails";
+import {MovieHome} from "./pages/MovieHome";
+import {Header} from "./components/Header";
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
-function App() {
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Router>
+      <header>
+        <Header/>
       </header>
-    </div>
+
+      <main className="container">
+        <Routes>
+          <Route path="/details/:Id" element={<MovieDetails/>}/>
+          <Route path="/" element={<MovieHome />}/>
+        </Routes>
+        {/*<div className="container">
+        <List />
+  </div>*/}
+      </main>
+
+      <footer>
+
+      </footer>
+    </Router>
   );
 }
 
-export default App;
+
