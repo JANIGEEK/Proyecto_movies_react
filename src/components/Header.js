@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Search from "./Search";
 
 export function Header() {
   return (
@@ -9,6 +10,7 @@ export function Header() {
           Movie-Look
         </Link>
         
+        <Search/>
       </div>
     </nav>
   );
