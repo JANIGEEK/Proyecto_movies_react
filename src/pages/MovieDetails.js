@@ -2,29 +2,36 @@ import React, { useEffect, useState } from "react";
 //import movie from "./movie.json";
 import { useParams } from "react-router-dom";
 import { get } from "../utils/Api";
+import Spinner from "../components/Spinner";
 
 export function MovieDetails() {
-
-  
-  const {Id}  = useParams();
-
+  const { Id } = useParams();
   const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading]=useState(true)
   //console.log(Id);
 
   useEffect(() => {
+    setIsLoading(true);
     get("&i=" + Id).then((data) => {
       setMovie(data);
-      console.log(data)
+      setIsLoading(false)
+      //console.log(data);
     });
   }, [Id]);
 
-  if (!movie){
-    return null
+  if (isLoading){
+      return <Spinner/>
   }
+
+  /*if (!movie) {
+    return null;
+  }*/
+
+  
 
   return (
     <div className="container p-5  m-5 d-flex justify-content-around align-content-center flex-wrap">
-      <img src={movie.Poster} alt={movie.Title}  />
+      <img src={movie.Poster} alt={movie.Title} />
       <div className="col-6">
         <p>
           <strong>Title: </strong>
