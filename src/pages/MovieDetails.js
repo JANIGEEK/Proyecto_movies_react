@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 import { get } from "../utils/Api";
 import Spinner from "../components/Spinner";
 
+
 export function MovieDetails() {
   const { Id } = useParams();
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading]=useState(true)
   //console.log(Id);
+  
 
   useEffect(() => {
     setIsLoading(true);
